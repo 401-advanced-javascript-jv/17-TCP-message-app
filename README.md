@@ -1,6 +1,6 @@
-# LAB - 
+# LAB - 17
 
-## Project Name
+## TCP Message-based Server
 
 ### Author: Jesse Van Volkinburg
 
@@ -10,37 +10,23 @@
 * [back-end](http://xyz.com) (when applicable)
 * [front-end](http://xyz.com) (when applicable)
 
-#### Documentation
-* [api docs](http://xyz.com) (API servers)
-* [jsdoc](http://xyz.com) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
-
-### Modules
-#### `modulename.js`
-##### Exported Values and Methods
-
-###### `foo(thing) -> string`
-Usage Notes or examples
-
-###### `bar(array) -> array`
-Usage Notes or examples
-
 ### Setup
 #### `.env` requirements
 * `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
 
 #### Running the app
-* `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+* `npm server start` - to start the server
+* `npm client start` - to start the client
   
 #### Tests
-* How do you run tests?
+* `npm test` to run tests
 * What assertions were made?
+  * No assertions have been made
 * What assertions need to be / should be made?
+  * Does the server listen?
+  * Does the client connect?
+  * Can it read a file?
+  * Can it deal with a bad file?
+  * Can it convert a buffer to uppercase string?
+  * Can it write a file?
 
-#### UML
-Link to an image of the UML for your application and response to events
