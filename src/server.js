@@ -5,7 +5,7 @@ const net = require('net');
 const PORT = process.env.PORT || 3001;
 const server = net.createServer();
 
-server.listen(PORT, () => console.log(`Server up on ${port}`));
+server.listen(PORT, () => console.log(`Server up on ${PORT}`));
 
 let socketPool = {};
 
@@ -26,6 +26,7 @@ let dispatchEvent = (buffer) => {
   const text = buffer.toString().trim();
   const [eventType, eventMessage] = text.split(':');
   const messageToSend = { eventType, eventMessage };
+  console.log({messageToSend});
 
   for (const socket in socketPool) {
     socketPool[socket].write(JSON.stringify(messageToSend));

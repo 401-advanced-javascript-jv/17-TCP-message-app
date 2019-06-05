@@ -1,7 +1,7 @@
 {
   "name": "lab",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "directories": {
     "doc": "docs"
   },
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "server": "node src/server.js",
-    "logger": "node logger.js",
+    "logger": "node src/logger.js",
     "client": "node src/app.js",
     "watch": "nodemon index.js",
     "lint": "eslint '**/*.js'",

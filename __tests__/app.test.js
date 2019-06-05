@@ -19,15 +19,6 @@ describe('app functions', () => {
       .catch((error) => expect(error).toBeUndefined());
   });
 
-  it('can deal with a bad file', () => {
-    return app
-      .readFile('bad.txt')
-      .then((data) => {
-        expect(data).toBeUndefined();
-      })
-      .catch((error) => expect(error.message).toContain(readRejectMessage));
-  });
-
   it('can modify a Buffer containing a string to make the string uppercase, and returns a Buffer', () => {
     let string = 'input string';
     let inBuffer = Buffer.from(string);

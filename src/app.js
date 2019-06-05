@@ -8,9 +8,6 @@ const PORT = process.env.PORT;
 const HOST = process.env.HOST || 'localhost';
 
 const socket = new net.Socket();
-socket.connect(PORT, HOST, () => {
-  console.log('Socket connected');
-});
 
 const readFile = (file) => {
   return fs.readFile(file);
@@ -27,19 +24,34 @@ const writeFile = (filename, buffer) => {
 };
 
 const alterFile = (file) => {
-  readFile(file)
+  return readFile(file)
     .then((data) => {
-      return writeFile(modifyContents(data));
+      return writeFile(file, modifyContents(data));
     })
     .then(() => {
-      socket.write(`SAVE:${file} written`);
+      return Promise.resolve(socket.write(`SAVE:${file} written`));
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+socket.connect(PORT, HOST, () => {
+  console.log('Socket connected');
+
+  socket.on('close', () => {
+    console.log('Socket closed');
+  });
+
+  const file = process.argv[2];
+  alterFile(file)
+    .then(() => {
+      console.log('Closing connection...');
+      socket.end();
     })
     .catch((error) => {
       socket.write('ERROR:' + error);
     });
-};
-
-const file = process.argv[2];
-alterFile(file);
+});
 
 module.exports = exports = { readFile, modifyContents, writeFile };

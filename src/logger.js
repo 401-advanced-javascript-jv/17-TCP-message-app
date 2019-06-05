@@ -14,17 +14,22 @@ const messagesToLog = {
 const socket = new net.Socket();
 socket.connect(PORT, HOST, () => {
   console.log('Socket connected');
+
+  socket.on('data', processEvent);
+
+  socket.on('close', () => {
+    console.log('Socket closed');
+  });
+
 });
 
-socket.on('data', (buffer) => {
+const processEvent = (buffer) => {
   const text = buffer.toString().trim();
   const [eventType, eventMessage] = text.split(':');
+  console.log(eventType);
 
   if (eventType in messagesToLog) {
     console.log(eventMessage);
   }
-});
+};
 
-socket.on('close', () => {
-  console.log('Socket closed');
-});
