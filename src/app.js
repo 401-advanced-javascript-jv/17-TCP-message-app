@@ -4,7 +4,7 @@ require('dotenv').config();
 const net = require('net');
 
 const PORT = process.env.PORT;
-const HOST = process.env.HOST || 'localhost';
+const HOST = process.env.HOST;
 
 const socket = new net.Socket();
 

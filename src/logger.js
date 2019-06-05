@@ -3,8 +3,8 @@
 require('dotenv').config();
 const net = require('net');
 
-const PORT = process.env.PORT || 3001;
-const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 const messagesToLog = {
   SAVE: 'SAVE',

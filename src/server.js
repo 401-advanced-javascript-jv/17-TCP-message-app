@@ -1,8 +1,9 @@
 'use strict';
 
+require('dotenv').config();
 const net = require('net');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 const server = net.createServer();
 
 server.listen(PORT, () => console.log(`Server up on ${PORT}`));

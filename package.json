@@ -23,9 +23,9 @@
     "endOfLine": "lf"
   },
   "scripts": {
-    "server": "node src/server.js",
-    "logger": "node src/logger.js",
-    "client": "node src/app.js",
+    "server": "node ./src/server.js",
+    "logger": "node ./src/logger.js",
+    "client": "node ./src/app.js",
     "watch": "nodemon index.js",
     "lint": "eslint '**/*.js'",
     "test": "jest --verbose --coverage",
