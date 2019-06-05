@@ -22,7 +22,8 @@
     "endOfLine": "lf"
   },
   "scripts": {
-    "start": "node index.js",
+    "server": "node server.js",
+    "client": "node app.js",
     "watch": "nodemon index.js",
     "lint": "eslint '**/*.js'",
     "test": "jest --verbose --coverage",
