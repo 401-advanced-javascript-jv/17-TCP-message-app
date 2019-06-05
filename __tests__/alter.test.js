@@ -1,8 +1,6 @@
 'use strict';
 
-// Including the file is a problem because it forces an attempted connection
-// to a socket that doesn't exist. Not sure right now how to fix that.
-// let {readFile, modifyContents, writeFile} = require('../src/app.js');
+const {readFile, modifyContents, writeFile} = require('../src/alter.js');
 jest.mock('fs');
 
 let {
@@ -11,7 +9,7 @@ let {
   writeMessage,
 } = require('../__mocks__/fs.js');
 
-xdescribe('app functions', () => {
+describe('app functions', () => {
 
   it('can read a file', () => {
     return readFile('./test.txt')
@@ -26,7 +24,7 @@ xdescribe('app functions', () => {
       .then((data) => {
         expect(data).toBeUndefined();
       })
-      .catch((error) => expect(error.message).toContain(readRejectMessage));
+      .catch((error) => expect(error).toContain(readRejectMessage));
   });
 
   it('can modify a Buffer containing a string to make the string uppercase, and returns a Buffer', () => {

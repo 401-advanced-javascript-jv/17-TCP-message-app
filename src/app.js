@@ -9,6 +9,8 @@ const HOST = process.env.HOST || 'localhost';
 
 const socket = new net.Socket();
 
+const {readFile, modifyContents, writeFile} = require('./alter.js');
+
 socket.connect(PORT, HOST, () => {
   console.log('Socket connected');
 
@@ -26,20 +28,6 @@ socket.connect(PORT, HOST, () => {
       socket.write('ERROR:' + error);
     });
 });
-
-const readFile = (file) => {
-  return fs.readFile(file);
-};
-
-const modifyContents = (data) => {
-  let text = data.toString();
-  let upperText = text.toUpperCase();
-  return Buffer.from(upperText);
-};
-
-const writeFile = (filename, buffer) => {
-  return fs.writeFile(filename, buffer);
-};
 
 const alterFile = (file) => {
   return readFile(file)
