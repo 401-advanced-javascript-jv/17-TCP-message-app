@@ -10,7 +10,8 @@
 
 ### Setup
 #### `.env` requirements
-* `PORT` - Port Number
+* `PORT` - Port Number - defaults to 3001
+* `HOST` - hostname or IP where the server is running - defaults to 'localhost'
 
 #### Running the app
 You'll need three separate terminals, for now.
@@ -29,4 +30,3 @@ You'll need three separate terminals, for now.
 * What assertions need to be / should be made?
   * Does the server listen?
   * Does the client connect?
-
