@@ -1,6 +1,6 @@
 'use strict';
 
-let app = require('../app.js');
+let app = require('../src/app.js');
 jest.mock('fs');
 
 let {
@@ -25,7 +25,7 @@ describe('app functions', () => {
       .then((data) => {
         expect(data).toBeUndefined();
       })
-      .catch((error) => expect(error).toEqual(readRejectMessage));
+      .catch((error) => expect(error.message).toContain(readRejectMessage));
   });
 
   it('can modify a Buffer containing a string to make the string uppercase, and returns a Buffer', () => {

@@ -13,18 +13,20 @@
 * `PORT` - Port Number
 
 #### Running the app
-* `npm server` - to start the server
-* `npm client` - to start the client
+You'll need three separate terminals, for now.
+
+* `npm run server` - to start the server - do this first
+* `npm run logger` - ro start the logger - do this second
+* `npm run client` - to start the client - do this last
   
 #### Tests
 * `npm test` to run tests
 * What assertions were made?
-  * No assertions have been made
-* What assertions need to be / should be made?
-  * Does the server listen?
-  * Does the client connect?
   * Can it read a file?
   * Can it deal with a bad file?
   * Can it convert a buffer to uppercase string?
   * Can it write a file?
+* What assertions need to be / should be made?
+  * Does the server listen?
+  * Does the client connect?
 
