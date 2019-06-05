@@ -7,16 +7,17 @@
 ### Links and Resources
 * [submission PR](https://github.com/401-advanced-javascript-jv/17-TCP-message-app/pull/1)
 * [travis](https://travis-ci.com/401-advanced-javascript-jv/17-TCP-message-app)
+* `server` tcp :: ec2-34-219-10-23.us-west-2.compute.amazonaws.com:30010
 
 ### Setup
 #### `.env` requirements
-* `PORT` - Port Number - defaults to 3001
-* `HOST` - hostname or IP where the server is running - defaults to 'localhost'
+* `PORT` - Port Number
+* `HOST` - hostname or IP where the server is running
 
 #### Running the app
 You'll need three separate terminals, for now.
 
-* `npm run server` - to start the server - do this first
+* `npm run server` - to start the server - do this first (or connect to the running instance above)
 * `npm run logger` - ro start the logger - do this second
 * `npm run client <filename>` - to start the client - do this last, and will alter the given file
   
