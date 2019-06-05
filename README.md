@@ -5,18 +5,16 @@
 ### Author: Jesse Van Volkinburg
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [submission PR](https://github.com/401-advanced-javascript-jv/17-TCP-message-app/pull/1)
+* [travis](https://travis-ci.com/401-advanced-javascript-jv/17-TCP-message-app)
 
 ### Setup
 #### `.env` requirements
 * `PORT` - Port Number
 
 #### Running the app
-* `npm server start` - to start the server
-* `npm client start` - to start the client
+* `npm server` - to start the server
+* `npm client` - to start the client
   
 #### Tests
 * `npm test` to run tests
