@@ -1,46 +1,33 @@
-# LAB - 
+# LAB - 17
 
-## Project Name
+## TCP Message-based Server
 
 ### Author: Jesse Van Volkinburg
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
-
-#### Documentation
-* [api docs](http://xyz.com) (API servers)
-* [jsdoc](http://xyz.com) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
-
-### Modules
-#### `modulename.js`
-##### Exported Values and Methods
-
-###### `foo(thing) -> string`
-Usage Notes or examples
-
-###### `bar(array) -> array`
-Usage Notes or examples
+* [submission PR](https://github.com/401-advanced-javascript-jv/17-TCP-message-app/pull/1)
+* [travis](https://travis-ci.com/401-advanced-javascript-jv/17-TCP-message-app)
+* `server` tcp :: ec2-34-219-10-23.us-west-2.compute.amazonaws.com:30010
 
 ### Setup
 #### `.env` requirements
 * `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
+* `HOST` - hostname or IP where the server is running
 
 #### Running the app
-* `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+You'll need three separate terminals, for now.
+
+* `npm run server` - to start the server - do this first (or connect to the running instance above)
+* `npm run logger` - ro start the logger - do this second
+* `npm run client <filename>` - to start the client - do this last, and will alter the given file
   
 #### Tests
-* How do you run tests?
+* `npm test` to run tests
 * What assertions were made?
+  * Can it read a file?
+  * Can it deal with a bad file?
+  * Can it convert a buffer to uppercase string?
+  * Can it write a file?
 * What assertions need to be / should be made?
-
-#### UML
-Link to an image of the UML for your application and response to events
+  * Does the server listen?
+  * Does the client connect?
