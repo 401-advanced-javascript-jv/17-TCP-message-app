@@ -1,7 +1,6 @@
 'use strict';
 
 require('dotenv').config();
-const fs = require('fs').promises;
 const net = require('net');
 
 const PORT = process.env.PORT;
