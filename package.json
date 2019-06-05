@@ -6,6 +6,7 @@
     "doc": "docs"
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "jest": "^24.8.0"
   },
@@ -23,6 +24,7 @@
   },
   "scripts": {
     "server": "node server.js",
+    "logger": "node logger.js",
     "client": "node app.js",
     "watch": "nodemon index.js",
     "lint": "eslint '**/*.js'",
