@@ -2,10 +2,10 @@
 
 const net = require('net');
 
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const server = net.createServer();
 
-server.listen(port, () => console.log(`Server up on ${port}`) );
+server.listen(PORT, () => console.log(`Server up on ${port}`));
 
 let socketPool = {};
 
@@ -14,21 +14,20 @@ server.on('connection', (socket) => {
   socketPool[id] = socket;
 
   socket.on('data', (buffer) => dispatchEvent(buffer));
+
   socket.on('close', () => {
     delete socketPool[id];
-  });
-  socket.on('error', (payload) => {
-    console.log(payload);
   });
 });
 
 let dispatchEvent = (buffer) => {
+  // the following three lines are not strictly necessary, just demonstrating how
+  // to split type and payload/message
   const text = buffer.toString().trim();
-  const [eventType,eventMessage] = text.split(':');
-  const messageToSend = {eventType, eventMessage};
+  const [eventType, eventMessage] = text.split(':');
+  const messageToSend = { eventType, eventMessage };
+
   for (const socket in socketPool) {
     socketPool[socket].write(JSON.stringify(messageToSend));
   }
 };
-
-

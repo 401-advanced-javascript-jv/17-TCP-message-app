@@ -5,7 +5,7 @@ const fs = require('fs').promises;
 const net = require('net');
 
 const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+const HOST = process.env.HOST || 'localhost';
 
 const socket = new net.Socket();
 socket.connect(PORT, HOST, () => {
@@ -13,9 +13,7 @@ socket.connect(PORT, HOST, () => {
 });
 
 const readFile = (file) => {
-  return fs.readFile(file).catch((error) => {
-    socket.emit('error', error);
-  });
+  return fs.readFile(file);
 };
 
 const modifyContents = (data) => {
@@ -25,11 +23,23 @@ const modifyContents = (data) => {
 };
 
 const writeFile = (filename, buffer) => {
-  return fs.writeFile(filename, buffer).then(() => {
-    socket.write('SUCCESS:File Written');
-  }).catch((error) => {
-    socket.emit('error', error);
-  });
+  return fs.writeFile(filename, buffer);
 };
+
+const alterFile = (file) => {
+  readFile(file)
+    .then((data) => {
+      return writeFile(modifyContents(data));
+    })
+    .then(() => {
+      socket.write(`SAVE:${file} written`);
+    })
+    .catch((error) => {
+      socket.write('ERROR:' + error);
+    });
+};
+
+const file = process.argv[2];
+alterFile(file);
 
 module.exports = exports = { readFile, modifyContents, writeFile };

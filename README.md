@@ -17,7 +17,7 @@ You'll need three separate terminals, for now.
 
 * `npm run server` - to start the server - do this first
 * `npm run logger` - ro start the logger - do this second
-* `npm run client` - to start the client - do this last
+* `npm run client <filename>` - to start the client - do this last, and will alter the given file
   
 #### Tests
 * `npm test` to run tests
