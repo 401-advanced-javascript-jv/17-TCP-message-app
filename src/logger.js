@@ -24,9 +24,8 @@ socket.connect(PORT, HOST, () => {
 });
 
 const processEvent = (buffer) => {
-  const text = buffer.toString().trim();
-  const [eventType, eventMessage] = text.split(':');
-  console.log(eventType);
+  const messageObject = JSON.parse(buffer.toString().trim());
+  let {eventType, eventMessage} = messageObject;
 
   if (eventType in messagesToLog) {
     console.log(eventMessage);

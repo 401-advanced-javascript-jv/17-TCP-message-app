@@ -9,6 +9,24 @@ const HOST = process.env.HOST || 'localhost';
 
 const socket = new net.Socket();
 
+socket.connect(PORT, HOST, () => {
+  console.log('Socket connected');
+
+  socket.on('close', () => {
+    console.log('Socket closed');
+  });
+
+  const file = process.argv[2];
+  alterFile(file)
+    .then(() => {
+      console.log('Closing connection...');
+      socket.end();
+    })
+    .catch((error) => {
+      socket.write('ERROR:' + error);
+    });
+});
+
 const readFile = (file) => {
   return fs.readFile(file);
 };
@@ -35,23 +53,5 @@ const alterFile = (file) => {
       return Promise.reject(error);
     });
 };
-
-socket.connect(PORT, HOST, () => {
-  console.log('Socket connected');
-
-  socket.on('close', () => {
-    console.log('Socket closed');
-  });
-
-  const file = process.argv[2];
-  alterFile(file)
-    .then(() => {
-      console.log('Closing connection...');
-      socket.end();
-    })
-    .catch((error) => {
-      socket.write('ERROR:' + error);
-    });
-});
 
 module.exports = exports = { readFile, modifyContents, writeFile };

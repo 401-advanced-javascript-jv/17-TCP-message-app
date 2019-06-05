@@ -26,7 +26,6 @@ let dispatchEvent = (buffer) => {
   const text = buffer.toString().trim();
   const [eventType, eventMessage] = text.split(':');
   const messageToSend = { eventType, eventMessage };
-  console.log({messageToSend});
 
   for (const socket in socketPool) {
     socketPool[socket].write(JSON.stringify(messageToSend));
